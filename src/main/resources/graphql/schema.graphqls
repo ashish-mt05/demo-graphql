@@ -1,0 +1,31 @@
+type Movie{
+    id:ID!
+    title:String
+    duration:Int
+    review:[Review]
+}
+type Review{
+    id:ID!
+    rating:Int
+    comment:String
+}
+input MovieInput{
+    title:String
+    duration:Int
+    review:[ReviewInput]
+}
+input ReviewInput{
+    rating:Int
+    comment:String
+}
+
+type Mutation{
+    addMovie(movieInput: MovieInput): Movie
+    updateMovie(id:Int, movieInput: MovieInput): Movie
+    deleteMovie(id:Int):String
+}
+
+type Query{
+    findMovieById(id:Int):Movie
+    findAllMovies:[Movie]
+}
